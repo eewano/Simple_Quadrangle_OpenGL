@@ -2,6 +2,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include "Utility.h"
 #include "Shader.h"
 
 struct Vec2 {
@@ -13,6 +14,9 @@ const Vec2 WINDOW_SIZE = {800, 600};
 GLFWwindow *window;
 
 int main(int argc, const char *argv[]) {
+
+    //当プロジェクトの作業ディレクトリを表示
+    std::cout << "Current directory is " << GetCurrentWorkingDir().c_str() << ".\n";
 
     //GLFWの初期化(失敗したら終了)
     if (!glfwInit()) {
@@ -31,13 +35,18 @@ int main(int argc, const char *argv[]) {
     window = glfwCreateWindow(WINDOW_SIZE.x, WINDOW_SIZE.y, "Simple_Quadrangle", nullptr, nullptr);
 
     Vec2 screen;
+    //glViewportで必要とされるフレームバッファのサイズを取得
     glfwGetFramebufferSize(window, &screen.x, &screen.y);
 
+    //window生成失敗時のプログラムの終了処理
     if (window == nullptr) {
         std::cout << "Failed to create GLFW window.\n";
         glfwTerminate();
         return EXIT_FAILURE;
     }
+
+    //エラー時に呼ばれるコールバックを設定
+    glfwSetErrorCallback(ErrorCallback);
 
     //windowのコンテキストをカレントにする
     glfwMakeContextCurrent(window);
