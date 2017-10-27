@@ -102,7 +102,7 @@ int main(int argc, const char *argv[]) {
         glfwPollEvents();
 
         //glViewportで指定した範囲をこれで指定した色で塗り潰す
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClearColor(0.6f, 0.3f, 0.3f, 1.0f);
         //指定したバッファを特定の色で消去する
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -138,10 +138,10 @@ int main(int argc, const char *argv[]) {
             } else {
                 //背景色と同じ四角形の集まり
                 GLfloat vertices[] = {
-                        0.9f - calc, 0.9f - calc, 0.0f, 0.2f, 0.3f, 0.3f, //Top Right
-                        0.9f - calc, -0.9f + calc, 0.0f, 0.2f, 0.3f, 0.3f, //Bottom Right
-                        -0.9f + calc, -0.9f + calc, 0.0f, 0.2f, 0.3f, 0.3f, //Bottom Left
-                        -0.9f + calc, 0.9f - calc, 0.0f, 0.2f, 0.3f, 0.3f, //Top Left
+                        0.9f - calc, 0.9f - calc, 0.0f, 0.6f, 0.3f, 0.3f, //Top Right
+                        0.9f - calc, -0.9f + calc, 0.0f, 0.6f, 0.3f, 0.3f, //Bottom Right
+                        -0.9f + calc, -0.9f + calc, 0.0f, 0.6f, 0.3f, 0.3f, //Bottom Left
+                        -0.9f + calc, 0.9f - calc, 0.0f, 0.6f, 0.3f, 0.3f, //Top Left
                 };
 
                 glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
