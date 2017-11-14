@@ -105,6 +105,9 @@ int main(int argc, const char *argv[]) {
         glClearColor(0.6f, 0.3f, 0.3f, 1.0f);
         //指定したバッファを特定の色で消去する
         glClear(GL_COLOR_BUFFER_BIT);
+        
+        //設定したシェーダーの使用
+        shader.Use();
 
         for (GLint i = 0; i < 9; i++) {
             //多用する i * 0.1f をcalcでまとめる
@@ -127,8 +130,6 @@ int main(int argc, const char *argv[]) {
                         GL_STATIC_DRAW //データの利用方法(GL_STATIC_DRAW: 一度だけアップロードする)
                 );
 
-                //設定したシェーダーの使用
-                shader.Use();
                 //VAOの有効化(VAOに割り当てた設定とバッファが復元される)
                 glBindVertexArray(VAO);
                 glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
@@ -146,11 +147,10 @@ int main(int argc, const char *argv[]) {
 
                 glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-                shader.Use();
                 glBindVertexArray(VAO);
                 glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
                 glBindVertexArray(0);
-
+                
             }
         }
 
